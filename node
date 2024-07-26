@@ -1,0 +1,9 @@
+php artisan serve
+php artisan migrate
+php artisan migrate:fresh --seed
+
+email admin@gmail.com
+password 123456789
+
+email user_laravel@gmail.com
+password 123456789
