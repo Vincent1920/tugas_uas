@@ -1,0 +1,194 @@
+.brand {
+    width: 100%;
+    height: 100px;
+    /* position: ; */
+  }
+  
+  
+  
+  
+  .brand_container {
+    width: 100%;
+    height: 100px;
+    /* background-color: aqua; */
+  }
+  
+  .brand_container h1 {
+    color: rgb(219, 176, 110);
+    font-family: 'Qwigley', cursive;
+    font-size: 2.5rem;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .brand_container1 {
+    width: 100%;
+    height: 400px;
+    /* background-color: black; */
+  }
+  
+  .brand_dispay {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .brand_container-1 {
+    transition: 1s;
+    border-radius: 5%;
+    margin: 30px 20px;
+    width: 25%;
+    height: 300px;
+    background-color: rgba(215, 235, 235, 0.753);
+  }
+  .brand_animation{
+  
+    animation: 1s slide-up;
+  }
+  .brand_animation1{
+  
+    animation: 1.3s slide-up;
+  }.brand_animation2{
+  
+    animation: 1.6s slide-up;
+  }
+  
+  .brand_container-1 img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .brand_container-1:hover {
+    border-radius: 10%;
+  }
+  
+  .brand_marquee {
+    /* background-color: aqua; */
+    width: 100%;
+    height: 100px;
+    margin: 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    position: absolute;
+  }
+  
+  .brand_marquee span {
+    color: #ba8c43;
+    margin: 20px;
+    font-size: 3rem;
+    /* text-align: center; */
+    display: inline-block;
+    padding-left: 100%;
+    font-weight: 1000;
+    font-family: 'Ruge Boogie', cursive;
+  
+    animation: marquee 10s linear infinite;
+  }
+  
+  .brand_marquee2 span {
+    animation-delay: 30s linear infinite;
+  }
+  
+  @keyframes marquee {
+    0% {
+      transform: translate(0, 0);
+    }
+  
+    100% {
+      transform: translate(-100%, 0);
+    }
+  }
+  
+  .brand_container2{
+    width: 100%;
+    height: auto;
+    /* background-color: aqua; */
+  }
+  
+  .brand_container3{
+    width: 100%;
+    height: 100px;
+    /* background-color: #1fa547; */
+  }
+  .brand_container4{
+    display: flex;
+    width: 100%;
+    height: 500px;
+    /* background-color: aqua; */
+  }
+  .brand_container-4{
+    width: 40%;
+    height: 100%;
+    /* background-color: rgb(252, 84, 84); */
+  }
+  
+  .brand_container_4{
+    width: 60%;
+    height: 100%;
+    /* background-color: #ba8c43; */
+    /* display: flex; */
+    /* justify-content: center; */
+  }
+  .brand_container-ke4{
+    margin: 17% 5%;
+    position: absolute;
+    width: 20%;
+    height: 30%;
+    /* background-color: aquamarine; */
+  }
+  .brand_container_ke4{
+    margin: 12% 30%;
+    width: 40%;
+    height: 70%;
+    /* background-color: aquamarine; */
+  }
+  
+  .brand_container-ke4 img{
+    width: 100%;
+    height: 100%;
+  }
+  .brand_container_ke4 img{
+    width: 100%;
+    height: 100%;
+  }
+  
+  .brand_containerke4bob{
+    width: 50%;
+    height: 100px;
+    /* background-color: aquamarine; */
+  }
+  
+  .brand_container4_text{
+    margin: 25% 0px;
+    width: 100%;
+    height: 60%;
+    /* background-color: aqua; */
+  }
+  
+  .brand_container4_text h1{
+    font-family: "Redressed", cursive;
+    /* font-family: "Ravi Prakash", system-ui; */
+    font-size: 3rem;
+    text-align: center;
+    color: rgb(230, 185, 127);
+  }
+  .brand_container4_text p{
+    margin: 0px 20px;
+    font-size: 1.4rem;
+    font-family: "Redressed", cursive;
+    color:rgb(227, 186, 131) ;
+    width: 90%;
+    height: auto;
+    text-align: center;
+  }
+  
+  
+  @keyframes slide-up {
+    from {
+      margin-top: 100%;
+    }
+    to {
+      margin-top: 0%;
+    }
+  }
+  

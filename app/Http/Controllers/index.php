@@ -18,4 +18,7 @@ class index extends Controller
             // 'user' => User::findOrFail($id)
         ]);
     }
+    public function brand(){
+        return view('brand.brand');
+    }
 }

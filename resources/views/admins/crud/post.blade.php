@@ -18,6 +18,7 @@
                     <th scope="col">deskripsi</th>
                     <th scope="col">harga</th>
                     <th scope="col">jenis/kategori</th>
+                    <th scope="col">Gram(G)/slice</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,6 +30,8 @@
                     <td>{{ $barang->deskripsi }}</td>
                     <td>{{ $barang->harga }}</td>
                     <td>{{ $barang->kategori->nama_kategori }}</td>
+                    <td>{{ $barang->berat_barang }}</td>
+
                     <td>
                         <a href="{{route('barangs.show',$barang->id)}}" class="btn btn-primary">View</a>
                         <a href="{{ route('barangs.edit', $barang->id) }}" class="btn btn-warning">Edit</a>

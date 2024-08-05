@@ -29,9 +29,10 @@ class BarangController extends Controller
      */
     public function create()
     {
+        $kategori = Kategori::all();
         // $barangs = Barang::all();
         return view('admins.crud.create',[
-            // 'barangs' => $barangs,
+            'kategoris' => $kategori,
 
         ]);
     }
@@ -47,6 +48,7 @@ class BarangController extends Controller
             'img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'deskripsi' => 'required',
             'harga' => 'required|numeric',
+            'berat_barang' => 'required',
             'kategori_id' => 'required|exists:kategoris,id',
         ]);
     
@@ -61,6 +63,7 @@ class BarangController extends Controller
         // Menyimpan data ke database
         barang::create([
             'title' => $request->title,
+            'berat_barang' => $request->berat_barang,
             'img' => $imageName,
             'deskripsi' => $request->deskripsi,
             'harga' => $request->harga,
@@ -115,6 +118,7 @@ class BarangController extends Controller
     $request->validate([
         'title' => 'required|string|max:255',
         'harga' => 'required|numeric',
+        'berat_barang' => 'required|string|max:255',
         'deskripsi' => 'nullable|string',
         'kategori_id' => 'required|exists:kategoris,id', 
         
@@ -127,6 +131,7 @@ class BarangController extends Controller
     // Perbarui data barang
     $barang->title = $request->input('title');
     $barang->harga = $request->input('harga');
+    $barang->berat_barang = $request->input('berat_barang');
     $barang->kategori_id = $request->input('kategori_id'); // Perbarui kategori_id
     $barang->deskripsi = $request->input('deskripsi');
 
@@ -137,7 +142,7 @@ class BarangController extends Controller
             Storage::delete('public/images/' . $barang->img);
         }
 
-        // Simpan gambar baru
+    
         $imageName = time() . '.' . $request->img->extension();
         $request->img->move(public_path('images'), $imageName);
 

@@ -20,8 +20,12 @@
             
 
 
-        <div class="mb-3">
-            <label for="harga" class="form-label">harga</label>
+        <label for="harga" aria-placeholder="harga baranga" class="form-label">harga</label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">IDR</span>
+              {{-- <span class="input-group-text">0.00  </span> --}}
+            </div>
             <input type="text" class="form-control @error('harga') is-invalid @enderror" id="harga" name="harga" required value="{{ old('harga') }}">
             @error('harga')
             <div class="invalid-feedback">
@@ -32,10 +36,20 @@
 
         <select class="form-select" name="kategori_id" aria-label="Default select example">
             <option value="" disabled selected>Pilih kategori</option>
-            <option value="1">roti</option>
-            <option value="2">cokelat</option>
-            <option value="3">minuman</option>
+             @foreach($kategoris as $kategori)
+                <option value="{{ $kategori->id }}">{{ $kategori->nama_kategori }}</option>
+            @endforeach
         </select>
+
+        <div class="mb-3">
+            <label for="title" class="form-label">masukan Gram(G)/slice</label>
+            <input type="text" class="form-control @error('title') is-invalid @enderror" id="berat_barang" name="berat_barang" required autofocus value="{{ old('berat_barang') }}">
+            @error('berat_barang')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+            @enderror
+        </div>
 
         <div class="mb-3">
             <label for="image" class="form-label">Post image</label>

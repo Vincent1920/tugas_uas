@@ -4,10 +4,11 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\User;
+use App\Models\Barang;
+use App\Models\Kategori;
 use App\Http\Controllers\admin;
 use Illuminate\Database\Seeder;
-use App\Models\User;
-use App\Models\Kategori;
 
 
 class DatabaseSeeder extends Seeder
@@ -22,10 +23,10 @@ class DatabaseSeeder extends Seeder
             $data =[
 [
 
-    'name'=>'vincent',
-    'username'=>'vincent',
+    'name'=>'OWNER',
+    'username'=>'OWENR',
     'is_admin'=>'1',
-    'email' =>'admin@gmail.com',
+    'email' =>'owner@gmail.com',
     'password'=>bcrypt('123456789')
 ],[
     'name'=>'user',
@@ -36,17 +37,34 @@ class DatabaseSeeder extends Seeder
     
     ]
 ];
-foreach ($data as $key => $val) {
-    User::create($val);
-}
-$data = [
-    ['nama_kategori' => 'roti'],
-    ['nama_kategori' => 'cokelat'],
-    ['nama_kategori' => 'minuman'],
-];
+        foreach ($data as $key => $val) {
+         User::create($val); 
+        }
+        $data = [
+             ['nama_kategori' => 'roti'],
+             ['nama_kategori' => 'dessert'],
+             ['nama_kategori' => 'chocolate'],
+             ['nama_kategori' => 'beverage'],
+        ];
 
-foreach ($data as $item) {
-    Kategori::create($item);
-}
+        foreach ($data as $item) {
+             Kategori::create($item);
+        }
+
+
+        $barang =[
+            ['title' =>'raisin bread'],
+            ['berat_barang' =>'100(g)'], 
+            ['deskripsi'=>'bread with raisin on it'],            
+            ['harga' =>'50.00'],
+            ['Kategori'=>'1'],
+            ['user_id'=>'1'],
+        ];
+
+
+        foreach($barang as $barangs){
+            Barang::create($barangs);
+        }
+
     }
 }

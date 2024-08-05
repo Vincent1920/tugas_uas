@@ -45,6 +45,7 @@
                     </option>
                 @endforeach
             </select>
+            
             @error('kategori_id')
                 <div class="invalid-feedback">
                     {{ $message }}
@@ -52,6 +53,17 @@
             @enderror
         </div>
         
+        <div class="mb-3">
+            <label for="berat_barang" class="form-label">masukan angka berat barang /Gram(G)/slice</label>
+            <input type="text" class="form-control @error('berat_barang') is-invalid @enderror" id="berat_barang" name="berat_barang"
+                required autofocus value="{{ $barang->berat_barang }}">
+            @error('berat_barang')
+            <div class="invalid-feedback">
+                {{ $message }}
+            </div>
+            @enderror
+        </div>
+
         <div class="mb-3">
             <label for="image" class="form-label"> Images</label>
 

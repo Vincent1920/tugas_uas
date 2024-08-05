@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="css/navbar.css">
     {{-- <link rel="stylesheet" href="css/navbar.css"> --}}
 
+    <link rel="icon" href="{{ asset('favicon.ico') }}">
     <title>ChocoScript</title>
 
     <!-- content -->

@@ -10,7 +10,7 @@ class Barang extends Model
     use HasFactory;
     // use HasFactory;
     // protected $fillable = ['title', 'harga', 'deskripsi', 'img', 'kategori_id'];
-    protected $fillable = ['title', 'img', 'deskripsi', 'harga', 'user_id','kategori_id'];
+    protected $fillable = ['title', 'img', 'deskripsi', 'harga', 'berat_barang','user_id','kategori_id'];
 
     
     public function user()
@@ -21,4 +21,11 @@ class Barang extends Model
     {
         return $this->belongsTo(Kategori::class);
     }
+ 
+
+// Barang.php
+public function cartItems()
+{
+    return $this->hasMany(CartItem::class);
+}
 }

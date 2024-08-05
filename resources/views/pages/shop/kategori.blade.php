@@ -17,9 +17,9 @@
         <link href="https://fonts.googleapis.com/css2?family=Delius+Unicase&family=Rancho&display=swap"
             rel="stylesheet">
         <link rel="stylesheet" href="../../css/navbar.css">
-        <link rel="shortcut icon" href="../../img/b734317dc97d8d22aec2f5b29e0e8672-removebg-preview.png">
+        <link rel="icon" href="{{ asset('favicon.ico') }}">
         <title>ChocoScript</title>
-
+    
         <!-- container -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

@@ -93,12 +93,12 @@
         </li>
 
         <li class="navbar-li dropdown">
-            <a class="navbar-link dropdown-toggle " href="page/brand.html">
+            <a class="navbar-link dropdown-toggle " href="{{route('brand')}}">
                 Brand
             </a>
             <ul class="dropdown-menu ">
                 <li class="dropdown-item">
-                    <a class="navbar-link1" href="#">
+                    <a class="navbar-link1" href="{{route('shop')}}">
                         <div class="navbar-img1">
                             <img src="../img/brand/Chocolate.png" alt="">
                         </div>
@@ -110,7 +110,7 @@
                     </a>
                 </li>
                 <li class="dropdown-item">
-                    <a class="navbar-link1" href="#">
+                    <a class="navbar-link1" href="{{route('shop')}}">
                         <div class="navbar-img1">
                             <img src="../img/brand/dark_22_piece-removebg-preview.png" alt="">
                         </div>
@@ -122,7 +122,7 @@
                     </a>
                 </li>
                 <li class="dropdown-item">
-                    <a class="navbar-link1" href="#">
+                    <a class="navbar-link1" href="{{route('shop')}}">
                         <div class="navbar-img1">
                             <img src="../img/brand/Super_cookies.png" alt="">
                         </div>
@@ -135,7 +135,7 @@
                 </li>
 
                 <li class="dropdown-item">
-                    <a class="navbar-link1" href="#">
+                    <a class="navbar-link1" href="{{route('shop')}}">
                         <div class="navbar-img1">
                             <img src="../img/brand/Tongan_vanilla.png" alt="">
                         </div>
@@ -170,6 +170,13 @@
                         <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0m-9 8c0 1 1 1 1 1h5v-1a2 2 0 0 1 .01-.2 4.49 4.49 0 0 1 1.534-3.693Q8.844 9.002 8 9c-5 0-6 3-6 4m7 0a1 1 0 0 1 1-1v-1a2 2 0 1 1 4 0v1a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1zm3-3a1 1 0 0 0-1 1v1h2v-1a1 1 0 0 0-1-1"/>
                       </svg>
                 </a></li>
+                <li class="bob_nav"><a class="dropdown_a" href="{{route('cart')}}">Card
+
+                    <svg class="bob_nav-svg" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#c88a5b" class="bi bi-basket2-fill" viewBox="0 0 16 16">
+                        <path d="M5.929 1.757a.5.5 0 1 0-.858-.514L2.217 6H.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h.623l1.844 6.456A.75.75 0 0 0 3.69 15h8.622a.75.75 0 0 0 .722-.544L14.877 8h.623a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1.717L10.93 1.243a.5.5 0 1 0-.858.514L12.617 6H3.383zM4 10a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0zm3 0a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0zm4-1a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1"/>
+                    </svg>
+                </a>
+                </li>
             @else
                 <li class="bob_nav"><a class="dropdown_a" href="{{route('cart')}}">Card
 

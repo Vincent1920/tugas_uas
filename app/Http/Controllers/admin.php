@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Barang;
 
+use App\Models\CartItem;
 use Illuminate\Http\Request;
 // use Illuminate\Database\Eloquent\
 class admin extends Controller
@@ -28,4 +29,13 @@ class admin extends Controller
             'barangs' => $barangs,
         ]);
     }
+    public function cart(){
+        
+        $item_cart = User::whereHas('cartItems')->with('cartItems.barang')->get();  
+            return view('admins.pages.list_cart', [
+             'item_cart' => $item_cart
+        ]);
+    }
 }
+
+

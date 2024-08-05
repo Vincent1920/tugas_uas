@@ -14,17 +14,10 @@
                 </div>
                 <div class="col-md-4">
                     <img src="{{ asset('images/' . $barang->img) }}" alt="">
-                    {{-- <img src="{{ asset('images/' . $barang->img) }}" alt="{{ $barang->title }}" class="img-fluid"> --}}
                 </div>
             </div>
         </div>
         <div class="card-footer">
-            {{-- <a href="{{ route('barangs.edit', $barang->id) }}" class="btn btn-warning">Edit</a>
-            <form action="{{ route('barangs.destroy', $barang->id) }}" method="POST" style="display:inline-block;">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </form> --}}
             <a href="{{ route('barangs.index') }}" class="btn btn-secondary">Back Dashboard</a>
         </div>
     </div>
