@@ -1,6 +1,12 @@
 @extends('admins.index')
 @section('admin')
-    <h1 class="h2">Dashboard</h1>
+<!-- 
+        IF-8 
+    Abdul Malik Febrian Zulkifli (10123308)
+    Nadzla Khoerunnisa Misbah(10123285)
+    vincent luhulima  (10123309)
+     -->
+<h1 class="h2">Dashboard</h1>
   </div>
 
 

@@ -1,5 +1,5 @@
 <?php
-// use App\Models\Barang;
+// vincent luhulima 10123309
 use App\Http\Controllers\card;
 use App\Http\Controllers\admin;
 use App\Http\Controllers\index;
@@ -11,18 +11,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\controller_shop;
 use App\Http\Controllers\controller_login;
 use App\Http\Controllers\RegisterController;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-// Route::get('/admin', [App\Http\Controllers\admin::class, 'home'])->name('admin');
-// Route::get('/admin', [App\Http\Controllers\admin::class, 'admin'])->middleware('admin')->name('admin');
+use Illuminate\Auth\Events\Login;
 
 
 Route::get('/', [index::class, 'index'])->name('home');
@@ -31,42 +20,42 @@ Route::get('/brand', [index::class, 'brand'])->name('brand');
 Route::get('/shop', [controller_shop::class, 'index'])->name('shop');
 
 Route::get('/card',[card::class ,'card'])->name('card');
-Route::get('/login', [Controller_Login::class, 'view_login'])->name('login');
-Route::post('/login', [Controller_Login::class, 'login'])->name('postlogin');
-Route::post('/register', [RegisterController::class, 'register'])->name('register');
-Route::get('/logout', [Controller_Login::class, 'logout'])->name('logout');
 
+Route::middleware(['guest'])->group(function () {
+    Route::get('/login', [Controller_Login::class, 'view_login'])->name('login');
+    Route::post('/login', [Controller_Login::class, 'login'])->name('postlogin');
+    Route::post('/register', [RegisterController::class, 'register'])->name('register');
+});
 
-// Route::middleware(['auth', 'admin'])->group(function () {
-//     Route::resource('barangs', BarangController::class);
-// });
-// Route::group(['prefix' => 'baarangs' , 'as' => 'barang.'], function(){
-// });
-Route::resource('barangs', BarangController::class);
-
-// Route::get('/admin/home', [AdminController::class, 'home'])->name('admin.home');
 Route::middleware(['auth'])->group(function () {
-    
-Route::get('/admin', [admin::class, 'home'])->name('admin') ;
-Route::get('/admin/dashboard', [admin::class, 'dashboard'])->name('admin.dashboard');
-Route::get('/post',[BarangController::class,'index'])->name('post');
-Route::get('/creat',[BarangController::class,'create']);
-Route::post('/posts/store',[BarangController::class,'store']);
-Route::get('/barangs/show/{{barang}}',[BarangController::class,'show'])->name('show');
-Route::post('/update/{barang}',[BarangController::class , 'update']);
-Route::get('cart/admin',[admin::class,'cart'])->name('cart_admin');
+    Route::get('/logout', [Controller_Login::class, 'logout'])->name('logout');
+});
+
+
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::resource('barangs', BarangController::class);
+    Route::get('/admin', [admin::class, 'home'])->name('admin');
+    Route::get('/admin/dashboard', [admin::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/post',[BarangController::class,'index'])->name('post');
+    Route::get('/creat',[BarangController::class,'create']);
+    Route::post('/posts/store',[BarangController::class,'store']);
+    Route::get('/barangs/show/{{barang}}',[BarangController::class,'show'])->name('show');
+    Route::post('/update/{barang}',[BarangController::class , 'update']);
+    Route::get('cart/admin',[admin::class,'cart'])->name('cart_admin');
 
 });
 
 
 Route::get('/learn',[index::class,'learn'])->name('learn');
 Route::get('/kategori/{kategori_id}', [controller_shop::class, 'show'])->name('kategori.show');
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/card/{id}', [card::class, 'card'])->name('card.show');
-    
-});
     Route::get('/cart', [card::class, 'cart'])->name('cart');
     Route::patch('/cart/{id}', [card::class, 'update'])->name('cart.update');
     Route::post('cart/add', [card::class, 'add'])->name('cart.add');
     Route::delete('cart/remove/{id}', [card::class, 'remove'])->name('cart.remove');
-    
+});
+
+Route::get('forgot_password',[controller_login::class,'forgot_password'])->name('forgot_password');
+    Route::get('forgot-password/{token}', [controller_login::class, 'forgot_password']);

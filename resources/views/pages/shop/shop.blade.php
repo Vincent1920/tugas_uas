@@ -1,9 +1,4 @@
-    <!-- 
-        IF-8 
-    Abdul Malik Febrian Zulkifli (10123308)
-    Nadzla Khoerunnisa Misbah(10123285)
-    vincent luhulima  (10123309)
-     -->
+    
 @extends('pages.shop.index')
 @section('shop')
 <div class="container ">
@@ -52,7 +47,7 @@
 
 
     <div class="container-1">
-
+        
         <!-- card 1 -->
         <div class="container--1">
             @foreach ( $barangs as $barang )
@@ -63,6 +58,7 @@
                 </div>
 
                 <div class="container--1cart2">
+                    
                     <a href="{{ route('card.show', $barang->id) }}">
                         <img class="container--1cart2-img" src="{{ asset('images/' . $barang->img) }}"
                             alt="{{ $barang->title }}">

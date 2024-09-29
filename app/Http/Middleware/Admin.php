@@ -13,23 +13,26 @@ class Admin
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+   
+        public function handle(Request $request, Closure $next, $role)
     {
-        // if (Auth::check() && Auth::user()->is_admin == 1) {
-        //     return $next($request);
-        // }
-        if (Auth::check()) {
-            // Sekarang aman untuk mengakses pengguna dan propertinya
-            if (auth()->user()->is_admin == 1) {
-                return redirect('admin');
-            }
-                //    return $next($request);
-            // Redirect jika pengguna bukan admin
-            return redirect()->route('/')->with('error', "Hanya admin yang bisa mengakses!");
+        // Periksa apakah user sudah login
+        if (!Auth::check()) {
+            return redirect('login'); // Redirect jika belum login
         }
+
+        // Ambil user yang sedang login
+        $user = Auth::user();
+
+        // Cek apakah user memiliki peran yang sesuai
+        if ($user->role === $role) {
+            return $next($request); // Lanjutkan request jika peran sesuai
+        }
+
+        // Jika peran tidak sesuai, arahkan ke halaman yang sesuai
+        return redirect('/'); // Atau redirect ke halaman lain jika tidak memiliki hak akses
     
-        // // Redirect jika pengguna tidak terautentikasi
-        // return redirect('login')->with('error', "Anda perlu login untuk mengakses halaman ini!");
+    
     
     
     }

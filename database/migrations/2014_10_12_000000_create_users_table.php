@@ -1,5 +1,5 @@
 <?php
-
+// vincent 10123309
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('username')->unique();
-            $table->boolean('is_admin')->default(0);
-            // $table->string('usertype')->default('user');
+            $table->string('role')->default('user');
             $table->string('email')->unique();
             $table->string('password');
             $table->timestamps();

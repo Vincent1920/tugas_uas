@@ -1,4 +1,5 @@
 <?php
+//  vincenet 10123309 
 
 namespace App\Http\Controllers;
 use App\Models\Barang;
@@ -7,6 +8,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class BarangController extends Controller
 {
@@ -42,7 +44,6 @@ class BarangController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request->file('image')->store('post-image');
         $request->validate([
             'title' => 'required',
             'img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -52,7 +53,6 @@ class BarangController extends Controller
             'kategori_id' => 'required|exists:kategoris,id',
         ]);
     
-        // Menyimpan gambar yang diunggah
         if ($request->hasFile('img')) {
             $imageName = time() . '.' . $request->img->extension();
             $request->img->move(public_path('images'), $imageName);
@@ -60,8 +60,8 @@ class BarangController extends Controller
             return back()->withErrors(['img' => 'Image upload failed.']);
         }
     
-        // Menyimpan data ke database
-        barang::create([
+        // Simpan produk ke database
+        $product = barang::create([
             'title' => $request->title,
             'berat_barang' => $request->berat_barang,
             'img' => $imageName,
@@ -71,9 +71,20 @@ class BarangController extends Controller
             'kategori_id' => $request->kategori_id,
         ]);
     
-        return redirect()->route('post')->with('success', 'Data has been saved.');
+        // Generate QR code yang berisi link menuju halaman produk
+        // $qrCodePath = 'qrcodes/' . $product->id . '.png';
+        // QrCode::format('png')
+        //     ->size(200)
+        //     ->generate(route('show', $product->id),
+        //      storage_path('images' . $qrCodePath));
+    
+        // // Update produk dengan path QR code
+        // $product->update([
+        //     'qr_code' => $qrCodePath
+        // ]);
+    
+        return redirect()->route('post')->with('success', 'Data has been saved with QR code.');
     }
-
 
     
     /**
@@ -102,16 +113,7 @@ class BarangController extends Controller
         'kategoris' => $kategoris
     ]);
 }
-    // public function edit(Barang $barang)
-    // {
-    //     return view('admins.crud.update', [
-    //         'barang' => $barang,
-    //     ]);
-    // }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, $id)
 {
     // Validasi input
@@ -160,9 +162,21 @@ class BarangController extends Controller
      */
     public function destroy(string $id)
     {
+        // Temukan barang berdasarkan ID
         $barang = Barang::findOrFail($id);
-        $barang->delete();
-        return redirect()->route('post')->with('success', 'Barang deleted successfully.');
     
+        // Path gambar yang akan dihapus
+        $imagePath = public_path('images/' . $barang->img);
+    
+        // Hapus barang dari database
+        $barang->delete();
+    
+        // Hapus gambar jika ada
+        if (file_exists($imagePath)) {
+            unlink($imagePath); // Hapus file gambar
+        }
+    
+        return redirect()->route('post')->with('success', 'Barang dan gambar berhasil dihapus.');
     }
+    
 }

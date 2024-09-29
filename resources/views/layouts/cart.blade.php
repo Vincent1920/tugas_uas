@@ -233,7 +233,7 @@
                             </svg>
                         </a>
                     </li>
-                    @if (auth()->user()->is_admin)
+                    @if (auth()->user()->role === 'admin')
                     <li class="bob_nav"><a class="dropdown_a" href="/admin">Admin
                             <svg class="bob_nav-svg" xmlns="http://www.w3.org/2000/svg" width="30" height="30"
                                 fill="#c88a5b" class="bi bi-person-fill-lock" viewBox="0 0 16 16">

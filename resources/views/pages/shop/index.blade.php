@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <!-- navbar -->
@@ -36,13 +35,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
-      <!-- 
-        IF-8 
-    Abdul Malik Febrian Zulkifli (10123308)
-    Nadzla Khoerunnisa Misbah(10123285)
-    vincent luhulima  (10123309)
-     -->
-
 <body>
 <script src="js/shop.js"></script>
 

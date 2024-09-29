@@ -1,11 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
     <!-- 
         IF-8 
     Abdul Malik Febrian Zulkifli (10123308)
     Nadzla Khoerunnisa Misbah(10123285)
     vincent luhulima  (10123309)
      -->
-<!DOCTYPE html>
-<html lang="en">
 
 <head>
     <link rel="icon" href="{{ asset('favicon.ico') }}">
@@ -26,6 +26,7 @@
 </head>
 
 <body>
+    <script src="../admins/pos.js"></script>
     <script src="js/index.js"></script>
     <script src="js/admins/dashboard.js">
     </script>

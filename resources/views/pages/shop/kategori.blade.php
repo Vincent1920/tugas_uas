@@ -1,9 +1,4 @@
-    <!-- 
-        IF-8 
-    Abdul Malik Febrian Zulkifli (10123308)
-    Nadzla Khoerunnisa Misbah(10123285)
-    vincent luhulima  (10123309)
-     -->
+    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,16 +28,14 @@
             href="https://fonts.googleapis.com/css2?family=Delius+Unicase:wght@400;700&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Macondo&display=swap"
             rel="stylesheet">
 
-        <!-- 
-        nama  : vincent luhulima 
-        kelas : IF-8 
-        nim   : 10123309 -->
-        <!-- <script src="../../js/index.js"></script> -->
     </head>
 
 </head>
 
 <body>
+    <script src="js/nav.js"></script>
+<script src="js/index.js"></script>
+
     @include('navbar.nav')
 
     {{-- <div class="container">
@@ -71,6 +64,8 @@
 
 
     </div>
+<script src="js/index.js"></script>
+
 </body>
 
 </html>

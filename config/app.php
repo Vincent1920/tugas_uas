@@ -159,6 +159,8 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
+        Mews\Captcha\CaptchaServiceProvider::class,
+        Laravel\Ui\UiServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
@@ -189,6 +191,7 @@ return [
         /*
          * Application Service Providers...
          */
+        
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
@@ -207,7 +210,7 @@ return [
     | the aliases are "lazy" loaded so they don't hinder performance.
     |
     */
-
+    'Captcha' => Mews\Captcha\Facades\Captcha::class,
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),

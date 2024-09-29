@@ -1,0 +1,58 @@
+# docker-compose up -d   
+# docker-compose down -v
+version: '3.8'
+
+services:
+  app:
+    image: php:8.1-fpm
+    container_name: laravel-app
+    ports:
+      - "8000:80"
+    volumes:
+      - ./:/var/www/html
+    working_dir: /var/www/html
+    environment:
+      - DB_CONNECTION=mysql
+      - DB_HOST=127.0.0.1
+      - DB_PORT=3306
+      - DB_DATABASE=chocoscript
+      - DB_USERNAME=vincent11
+      - DB_PASSWORD=vincent11
+    networks:
+      - laravel-networks
+    depends_on:
+      - db
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx-server
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - ./:/var/www/html
+    networks:
+      - laravel-networks
+    depends_on:
+      - app
+
+  db:
+    image: mysql:8.0
+    container_name: db_Chocoscript
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "ROOT_PASSWORD"
+      MYSQL_DATABASE: chocoscript
+      MYSQL_USER: vincent11
+      MYSQL_PASSWORD: vincent11
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - laravel-networks
+
+volumes:
+  dbdata:
+
+networks:
+  laravel-networks:

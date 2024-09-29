@@ -78,8 +78,14 @@
                 </p>
                 <input type="email" id="email" name="email"  placeholder="Email" />
                 <input type="password" id="password" name="password" placeholder="Password" />
+                
+                <label for="captcha">CAPTCHA:</label>
+                <img src="{{  captcha_src('math') }}" alt="captcha">
+                <input type="text" name="captcha" id="captcha" placeholder="Captcha" required>
+                
                 <button type="submit">Login</button>
             </form>
+           
         </div>
 
         <div class="overlay-container">

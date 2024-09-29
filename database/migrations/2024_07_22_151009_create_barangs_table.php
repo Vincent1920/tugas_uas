@@ -1,4 +1,5 @@
 <?php
+// vincent 10123309
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -18,6 +19,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('berat_barang');
             $table->text('deskripsi');
+            $table->string('qr_code')->nullable();
             $table->foreignId('kategori_id')->constrained('kategoris')->onDelete('cascade'); 
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();

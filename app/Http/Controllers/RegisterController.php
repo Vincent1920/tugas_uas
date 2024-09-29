@@ -1,10 +1,12 @@
 <?php
+//  vincenet 10123309 
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -12,17 +14,14 @@ class RegisterController extends Controller
 {
 
     public function register(Request $request)
-    {
-        // dd($request);
-        $this->validator($request->all())->validate();
+{
+    $this->validator($request->all())->validate();
+    $user = $this->create($request->all());
+    Auth::login($user);
 
-        $user = $this->create($request->all());
-
-        // Optionally, log the user in
-        // Auth::login($user);
-
-        return redirect('/login')->with('success', 'registration susccrssfull!! please login');
-    }
+    // Redirects to the login page with a success message.
+    return redirect('/login')->with('success', 'Registration successful! Please login.');
+}
 
     protected function validator(array $data)
     {

@@ -2,14 +2,11 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-
+use App\Models\admin;
 use App\Models\User;
 use App\Models\Barang;
 use App\Models\Kategori;
-use App\Http\Controllers\admin;
 use Illuminate\Database\Seeder;
-
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,53 +15,60 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
-            $data =[
-[
-
-    'name'=>'OWNER',
-    'username'=>'OWENR',
-    'is_admin'=>'1',
-    'email' =>'owner@gmail.com',
-    'password'=>bcrypt('123456789')
-],[
-    'name'=>'user',
-    'username'=>'user_laravel',
-    'is_admin'=>'0',
-    'email' =>'user_laravel@gmail.com',
-    'password'=>bcrypt('123456789')
+        // Seed data untuk User (Owner dan User biasa)
+        $users = [
+                [
+                    'name' => 'vincent',
+                    'username' => 'vincent',
+                    'role' => 'admin',
+                    'email' => 'vincentluhulima600@gmail.com',
+                    'password' => bcrypt('vincent11'),
+                ],
+                [
+                    'name' => 'vincent1',
+                    'username' => 'vincent2', // Ubah username agar unik
+                    'role' => 'user',
+                    'email' => 'vincentluhulima6010@gmail.com',
+                    'password' => bcrypt('vincent11'),
+                ],
+        ];
     
-    ]
-];
-        foreach ($data as $key => $val) {
-         User::create($val); 
+        // Loop untuk membuat User jika email belum ada di database
+        foreach ($users as $user) {
+            if (!User::where('email', $user['email'])->exists()) {
+                User::create($user);
+            }
         }
-        $data = [
-             ['nama_kategori' => 'roti'],
-             ['nama_kategori' => 'dessert'],
-             ['nama_kategori' => 'chocolate'],
-             ['nama_kategori' => 'beverage'],
+    
+        // Seed data untuk Admin
+        // $admin = [
+        //     [
+        //         'name' => 'vicnent',
+        //         'username' => 'vincent',
+        //         'email' => 'vincentluhulima6010@gmail.com',
+        //         'password' => bcrypt('vincent11'),
+        //     ]
+        // ];
+    
+        // // Loop untuk membuat Admin jika email belum ada di database
+        // foreach ($admin as $admins) {
+        //     if (!admin::where('email', $admins['email'])->exists()) {
+        //         admin::create($admins); // Menggunakan model User, bukan admin controller
+        //     }
+        // }
+    
+        // Seed data untuk Kategori
+        $categories = [
+            ['nama_kategori' => 'roti'],
+            ['nama_kategori' => 'dessert'],
+            ['nama_kategori' => 'chocolate'],
+            ['nama_kategori' => 'beverage'],
         ];
-
-        foreach ($data as $item) {
-             Kategori::create($item);
+    
+        // Loop untuk membuat Kategori
+        foreach ($categories as $category) {
+            Kategori::create($category);
         }
-
-
-        $barang =[
-            ['title' =>'raisin bread'],
-            ['berat_barang' =>'100(g)'], 
-            ['deskripsi'=>'bread with raisin on it'],            
-            ['harga' =>'50.00'],
-            ['Kategori'=>'1'],
-            ['user_id'=>'1'],
-        ];
-
-
-        foreach($barang as $barangs){
-            Barang::create($barangs);
-        }
-
     }
+    
 }
